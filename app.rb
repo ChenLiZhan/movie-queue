@@ -19,11 +19,11 @@ class NotificationSubscriber < Sinatra::Base
     end
   end
 
-  post '/?' do
+  post '/' do
     "Notification subscriber up and running"
   end
 
-  post '/subscriber' do
+  post '/notification' do
     begin
       msg_type = request.env["HTTP_X_AMZ_SNS_MESSAGE_TYPE"]
       note = JSON.parse request.body.read
