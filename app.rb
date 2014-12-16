@@ -19,7 +19,7 @@ class NotificationSubscriber < Sinatra::Base
     end
   end
 
-  post '/' do
+  get '/' do
     "Notification subscriber up and running"
   end
 
