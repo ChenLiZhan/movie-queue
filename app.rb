@@ -26,7 +26,7 @@ class NotificationSubscriber < Sinatra::Base
   post '/subscriber' do
     begin
       msg_type = request.env["HTTP_X_AMZ_SNS_MESSAGE_TYPE"]
-      note = JSON.parse(request.body.read)
+      note = JSON.parse request.body.read
       logger.info "SNS_MSG_TYPE: #{msg_type}"
       logger.info "SNS_MSG: #{note}"
 
@@ -41,7 +41,7 @@ class NotificationSubscriber < Sinatra::Base
         note_message = note['Message']
         logger.inf "MSG_SAVED: Subject: #{note_subject}"
         logger.inf "MSG_SAVED: Message: #{note_message}"
-        unless save_message note_subject, note_message do
+        unless save_message note_subject, note_message
           halt 500, "Failed to save message"
         end
       end
@@ -49,6 +49,6 @@ class NotificationSubscriber < Sinatra::Base
       halt 400, "Could not process SNS notification"
     end
 
-    haml :subscriber
+    status 200
   end
 end
