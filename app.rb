@@ -39,8 +39,8 @@ class NotificationSubscriber < Sinatra::Base
       when 'Notification'
         note_subject = sns_note['Subject']
         note_message = sns_note['Message']
-        logger.inf "MSG_SAVED: Subject: #{note_subject}"
-        logger.inf "MSG_SAVED: Message: #{note_message}"
+        logger.info "MSG_SAVED: Subject: #{note_subject}"
+        logger.info "MSG_SAVED: Message: #{note_message}"
         unless save_message note_subject, note_message
           halt 500, "Failed to save message"
         end
