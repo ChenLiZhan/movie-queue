@@ -1,6 +1,6 @@
 require 'aws-sdk'
 
-class Message < AWS::Record::HashModel
+class Notification < AWS::Record::HashModel
   string_attr :subject
   string_attr :message
   timestamps
