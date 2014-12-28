@@ -1,7 +1,7 @@
 require 'sinatra/base'
 require 'json'
 require 'httparty'
-require_relative 'model/notification'
+require_relative 'model/movie_notify'
 
 ##
 # Fork of CadetService, using DynamoDB instead of Postgres
@@ -13,7 +13,7 @@ class NotificationSubscriber < Sinatra::Base
   helpers do
     def save_message(subject, message)
       begin
-        sns_note = Notification.new
+        sns_note = MovieNotify.new
         sns_note.subject = subject
         sns_note.message = message
         sns_note.save

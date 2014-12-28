@@ -1,6 +1,6 @@
 require 'aws-sdk'
 
-class Notification < AWS::Record::HashModel
+class MovieNotify < AWS::Record::HashModel
   string_attr :subject
   string_attr :message
   timestamps
