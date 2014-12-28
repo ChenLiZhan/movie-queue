@@ -1,6 +1,6 @@
 require 'aws-sdk'
 
-topic_arn = 'arn:aws:sns:ap-northeast-1:503315808870:sns_playtime'
+topic_arn = 'arn:aws:sns:us-west-2:819536398009:sns_playtime'
 
 sns = AWS::SNS.new
 t = sns.topics[topic_arn]
