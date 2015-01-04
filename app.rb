@@ -68,7 +68,7 @@ class NotificationSubscriber < Sinatra::Base
           body: param.to_json
         }
 
-        result = HTTParty.post('https://serene-citadel-5567.herokuapp.com/movie', options)
+        result = HTTParty.post('https://serene-citadel-5567.herokuapp.com/api/v2/movie', options)
       end
     rescue => e
       logger.error e
