@@ -60,6 +60,15 @@ class NotificationSubscriber < Sinatra::Base
         sns_confirmation = HTTParty.get sns_confirm_url
       when 'Notification'
         save_message sns_note['Subject'], sns_note['Message']
+        param = {
+          movie: sns_note['Subject']
+        }
+        options = {
+          headers: { 'Content-Type' => 'application/json' },
+          body: param.to_json
+        }
+
+        result = HTTParty.post('https://serene-citadel-5567.herokuapp.com/movie', options)
       end
     rescue => e
       logger.error e
