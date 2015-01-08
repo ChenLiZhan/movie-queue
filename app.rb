@@ -41,6 +41,7 @@ class NotificationSubscriber < Sinatra::Base
         save_message sns_note['Subject'], sns_note['Message']
         param = {
           movie: sns_note['Message']
+          sqs_key: sns_note['Subject']
         }
         options = {
           headers: { 'Content-Type' => 'application/json' },
