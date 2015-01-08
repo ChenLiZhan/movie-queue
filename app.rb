@@ -40,7 +40,7 @@ class NotificationSubscriber < Sinatra::Base
       when 'Notification'
         save_message sns_note['Subject'], sns_note['Message']
         param = {
-          movie: sns_note['Message']
+          movie: sns_note['Message'],
           sqs_key: sns_note['Subject']
         }
         options = {
